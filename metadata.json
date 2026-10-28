@@ -1,0 +1,10 @@
+{
+  "name": "Remix: Botta e Risposta 3.1 claudia",
+  "description": "Totem app per raccogliere e tradurre con empatia le testimonianze di persone richiedenti asilo, rifugiate e vulnerabili.",
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

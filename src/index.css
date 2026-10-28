@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Libre Baskerville", ui-serif, Georgia, serif;
+  --font-cursive: "Dancing Script", cursive;
+
+  
+  --color-primary: #1a365d;
+  --color-primary-light: #2c5282;
+  --color-accent: #d69e2e;
+  --color-accent-light: #ecc94b;
+  
+  --color-bg-main: #f7fafc;
+  --color-bg-card: #ffffff;
+  --color-bg-secondary: #edf2f7;
+  
+  --color-text-main: #1a202c;
+  --color-text-secondary: #4a5568;
+  --color-text-muted: #718096;
+  
+  --color-border: #e2e8f0;
+  
+  --color-state-recording: #d69e2e;
+  --color-state-success: #319795;
+  --color-state-error: #e53e3e;
+
+  /* Map old variables to new ones to minimize changes in App.tsx */
+  --color-warm-bg: var(--color-bg-main);
+  --color-olive: var(--color-accent);
+  --color-olive-dark: var(--color-accent-light);
+  --color-ink: var(--color-text-main);
+  
+  --animate-spin-slow: spin 3s linear infinite;
+}
+
+body {
+  background-color: var(--color-bg-main);
+  color: var(--color-text-main);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom classes for the institutional style */
+@layer utilities {
+  .shadow-institutional {
+    box-shadow: 0 2px 8px rgba(26, 54, 93, 0.08);
+  }
+  .rounded-institutional {
+    border-radius: 12px;
+  }
+}
+
+@media print {
+  @page {
+    size: A4 landscape;
+    margin: 0;
+  }
+  
+  body {
+    background-color: white;
+    margin: 0;
+    padding: 0;
+  }
+
+  .print\:hidden {
+    display: none !important;
+  }
+
+  .print\:p-0 {
+    padding: 0 !important;
+  }
+
+  .print\:shadow-none {
+    box-shadow: none !important;
+  }
+
+  .print\:rounded-none {
+    border-radius: 0 !important;
+  }
+
+  .print\:overflow-visible {
+    overflow: visible !important;
+    height: auto !important;
+    display: block !important;
+  }
+}
+
+@keyframes timer-ring {
+  0% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 100; }
+}
+
+.animate-timer-ring {
+  stroke-dasharray: 100;
+  animation: timer-ring 5s linear forwards;
+}
+
+@keyframes record-ring {
+  0% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 100; }
+}
+
+.animate-record-ring {
+  stroke-dasharray: 100;
+  animation-name: record-ring;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(1.3); opacity: 0; }
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+/* Hide number input spin buttons */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
